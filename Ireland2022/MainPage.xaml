@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage Title="Ireland 2022" xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ireland2022.MainPage">
-            
+             x:Class="Ireland2022.MainPage"
+             Title="Ireland 2022"
+             >
+
 
     <StackLayout>
         <Grid VerticalOptions="EndAndExpand"  Margin="50,0,50,100" >
@@ -27,20 +29,37 @@
 
             
 
-            <Label x:Name="LOCTime" Text="hi" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Title"/>
-            <Label x:Name="DESTime" Text="hi" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Title"/>
-            
-            <Label x:Name="BatteryPer" Text="hi" Grid.Row="2" Grid.Column="0" TextColor="Black" FontSize="Title"/>
-            
+            <Label x:Name="LOCTime" Text="hi" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
+            <Label x:Name="DESTime" Text="hi" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
+
+            <Label x:Name="WifiOn" Text="hi" Grid.Row="2" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
+            <Label x:Name="DataOn" Text="hi" Grid.Row="2" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
 
         </Grid>
 
-        <Button x:Name="FlightButton" Text="Flight" Clicked="FlightButton_Clicked" Grid.Column="0" Grid.Row="9" BackgroundColor="Green" CornerRadius="50" HorizontalOptions="CenterAndExpand" WidthRequest="300"/>
+        
+       
 
-        <Button x:Name="Currency" Text="Currency" Clicked="Currency_Clicked" Grid.Column="0" Grid.Row="8" BackgroundColor="Green" CornerRadius="50" HorizontalOptions="CenterAndExpand" WidthRequest="300"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
+            <Button x:Name="FlightButton" Text="Flight" Clicked="FlightButton_Clicked" Grid.Column="0" Grid.Row="0" BackgroundColor="Green" CornerRadius="50" HorizontalOptions="CenterAndExpand" WidthRequest="300"/>
 
+            <Button x:Name="Currency" Text="Currency" Clicked="Currency_Clicked" Grid.Column="1" Grid.Row="0" BackgroundColor="Green" CornerRadius="50" HorizontalOptions="CenterAndExpand" WidthRequest="300"/>
+            
+        </Grid>
+        
+        
+        <Label x:Name="AppVer" Text="hi" Grid.Row="2" TextColor="Black" FontSize="Micro" HorizontalOptions="CenterAndExpand" />
+       
 
 
     </StackLayout>

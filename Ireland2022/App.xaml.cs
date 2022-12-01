@@ -10,8 +10,8 @@ namespace Ireland2022
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage()) { BarBackgroundColor = Color.Green };
-   
+            MainPage = new NavigationPage(new MainPage()) { BarBackgroundColor = Color.Green, Title = "Ireland 2022" };
+            //NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override void OnStart()
