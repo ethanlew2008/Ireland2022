@@ -27,19 +27,13 @@ namespace Ireland2022
         public void HomeUpdate()
         {
             string dt = "";
-            
-            
-
-
+           
 
             AppVer.Text = Xamarin.Essentials.VersionTracking.CurrentVersion;
 
             if(Connectivity.NetworkAccess == NetworkAccess.Internet && !Connectivity.ConnectionProfiles.Contains(ConnectionProfile.WiFi)) { DataOn.Text = "Data On"; } else { DataOn.Text = "Data Off"; }
 
-            if(Connectivity.ConnectionProfiles.Contains(ConnectionProfile.WiFi)) { WifiOn.Text = "Wifi On"; } else { WifiOn.Text = "Wifi Off"; }
-           
-
-
+            if(Connectivity.ConnectionProfiles.Contains(ConnectionProfile.WiFi)) { WifiOn.Text = "Wifi On"; } else { WifiOn.Text = "Wifi Off"; } 
 
             LOCTime.Text = "LOC: " + DateTime.Now.ToString("HH:mm");
             if (DateTime.Now.Month > 4 && DateTime.Now.Month < 11) { dt = DateTime.UtcNow.AddHours(1).ToString("HH:mm"); }
@@ -52,9 +46,14 @@ namespace Ireland2022
             await Navigation.PushAsync(new FlightPage());
         }
 
-        private async void Currency_Clicked(object sender, EventArgs e)
+        private async void SleepButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CurrencyPage());
-        }      
+            await Navigation.PushAsync(new SleepPage());
+        }
+
+        private void ConvertButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

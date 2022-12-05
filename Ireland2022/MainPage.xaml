@@ -7,7 +7,7 @@
 
 
     <StackLayout>
-        <Grid VerticalOptions="EndAndExpand"  Margin="50,0,50,100" >
+        <Grid VerticalOptions="EndAndExpand"  Margin="50,0,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -27,37 +27,36 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            
 
-            <Label x:Name="LOCTime" Text="hi" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
+
+            <Label x:Name="LOCTime" Text="hi" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
             <Label x:Name="DESTime" Text="hi" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
 
-            <Label x:Name="WifiOn" Text="hi" Grid.Row="2" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
+            <Label x:Name="WifiOn" Text="hi" Grid.Row="2" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
             <Label x:Name="DataOn" Text="hi" Grid.Row="2" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
 
+            <Label x:Name="SleepTime" Text="Start Sleep" Grid.Row="4" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
+            <Label x:Name="SleepBreaths" Text="Start Sleep" Grid.Row="4" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
+
+            <Entry x:Name="CurrencyEUR" Text="£" Grid.Row="6" Grid.Column="0" TextColor="White" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Start" BackgroundColor="Green" Keyboard="Numeric"/>
+            <Label x:Name="CurrencyGBP" Text="€" Grid.Row="6" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+
         </Grid>
 
-        
-       
+
+
 
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+            <Button x:Name="ConvertButton" Text="Convert" Clicked="ConvertButton_Clicked" BackgroundColor="Green" CornerRadius="50" Grid.Column="0"/>
 
-            <Button x:Name="FlightButton" Text="Flight" Clicked="FlightButton_Clicked" Grid.Column="0" Grid.Row="0" BackgroundColor="Green" CornerRadius="50" HorizontalOptions="CenterAndExpand" WidthRequest="300"/>
+            <Button x:Name="FlightButton" Text="Flight" Clicked="FlightButton_Clicked" BackgroundColor="Green" CornerRadius="50" Grid.Column="2"/>
 
-            <Button x:Name="Currency" Text="Currency" Clicked="Currency_Clicked" Grid.Column="1" Grid.Row="0" BackgroundColor="Green" CornerRadius="50" HorizontalOptions="CenterAndExpand" WidthRequest="300"/>
-            
+            <Button x:Name="SleepButton" Text="Sleep" Clicked="SleepButton_Clicked" BackgroundColor="Green" CornerRadius="50" Grid.Column="1"/>
+
         </Grid>
-        
-        
+
+
         <Label x:Name="AppVer" Text="hi" Grid.Row="2" TextColor="Black" FontSize="Micro" HorizontalOptions="CenterAndExpand" />
        
 
