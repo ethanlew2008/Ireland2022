@@ -16,18 +16,26 @@ namespace Ireland2022
     public partial class MainPage : ContentPage
     {
 
-        
+
+        APIClient clnt = new APIClient();
+
         public MainPage()
         {
             InitializeComponent();
             BackgroundColor = Color.White;
             HomeUpdate();
+            clnt.GetGBP();
+            
+
+            if (AppInfo.RequestedTheme == AppTheme.Dark)
+            {
+                BackgroundColor = Color.DarkSlateGray;
+            }
         }
 
         public void HomeUpdate()
         {
             string dt = "";
-           
 
             AppVer.Text = Xamarin.Essentials.VersionTracking.CurrentVersion;
 
@@ -51,9 +59,9 @@ namespace Ireland2022
             await Navigation.PushAsync(new SleepPage());
         }
 
-        private void ConvertButton_Clicked(object sender, EventArgs e)
+        private void CurrencyEUR_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            try {  CurrencyGBP.Text = "€" + Math.Round(Convert.ToDouble(CurrencyEUR.Text) / Convert.ToDouble(clnt.varsyr), 2);} catch (Exception) { }
         }
     }
 }

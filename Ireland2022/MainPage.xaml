@@ -29,7 +29,7 @@
 
 
 
-            <Label x:Name="LOCTime" Text="hi" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+            <Label x:Name="LOCTime" Text="hi" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
             <Label x:Name="DESTime" Text="hi" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
 
             <Label x:Name="WifiOn" Text="hi" Grid.Row="2" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
@@ -38,19 +38,15 @@
             <Label x:Name="SleepTime" Text="Start Sleep" Grid.Row="4" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
             <Label x:Name="SleepBreaths" Text="Start Sleep" Grid.Row="4" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
 
-            <Entry x:Name="CurrencyEUR" Text="£" Grid.Row="6" Grid.Column="0" TextColor="White" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Start" BackgroundColor="Green" Keyboard="Numeric"/>
-            <Label x:Name="CurrencyGBP" Text="€" Grid.Row="6" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+            <Entry x:Name="CurrencyEUR" Text="" Grid.Row="6" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Start" BackgroundColor="Green" Keyboard="Numeric" TextChanged="CurrencyEUR_TextChanged" MaxLength="10"/>
+            <Label x:Name="CurrencyGBP" Text="€" Grid.Row="6" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Start" MaxLines="1"/>
 
         </Grid>
 
 
-
-
         <Grid>
 
-            <Button x:Name="ConvertButton" Text="Convert" Clicked="ConvertButton_Clicked" BackgroundColor="Green" CornerRadius="50" Grid.Column="0"/>
-
-            <Button x:Name="FlightButton" Text="Flight" Clicked="FlightButton_Clicked" BackgroundColor="Green" CornerRadius="50" Grid.Column="2"/>
+            <Button x:Name="FlightButton" Text="Flight" Clicked="FlightButton_Clicked" BackgroundColor="Green" CornerRadius="50" Grid.Column="0"/>
 
             <Button x:Name="SleepButton" Text="Sleep" Clicked="SleepButton_Clicked" BackgroundColor="Green" CornerRadius="50" Grid.Column="1"/>
 
