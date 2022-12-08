@@ -1,6 +1,4 @@
-﻿using Ireland2022.Droid.Screens;
-using Ireland2022.Screens;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using static Xamarin.Essentials.Permissions;
 using Battery = Xamarin.Essentials.Battery;
+using System.Diagnostics;
 
 namespace Ireland2022
 {
@@ -18,6 +17,8 @@ namespace Ireland2022
 
 
         APIClient clnt = new APIClient();
+        Stopwatch flighttimer = new Stopwatch();
+        Stopwatch sleeptimer = new Stopwatch();
 
         public MainPage()
         {
@@ -26,11 +27,7 @@ namespace Ireland2022
             HomeUpdate();
             clnt.GetGBP();
             
-
-            if (AppInfo.RequestedTheme == AppTheme.Dark)
-            {
-                BackgroundColor = Color.DarkSlateGray;
-            }
+            if (AppInfo.RequestedTheme == AppTheme.Dark) { BackgroundColor = Color.DarkSlateGray; }          
         }
 
         public void HomeUpdate()
@@ -49,19 +46,32 @@ namespace Ireland2022
             DESTime.Text = "DUB:" + dt;
         }
 
-        private async void FlightButton_Clicked(object sender, EventArgs e)
+        public void FlightButton_Clicked(object sender, EventArgs e) { FlightUpdate(); }
+        public void SleepButton_Clicked(object sender, EventArgs e) { SleepUpdate(); }
+
+        public void FlightUpdate()
         {
-            await Navigation.PushAsync(new FlightPage());
+            if (!flighttimer.IsRunning) { flighttimer.Start(); }
+
+            try { if (Convert.ToInt32(FlightTime.Text) <= 0) { flighttimer.Reset(); return; } } catch (Exception) { }
+            FlightPer.Text = "" + Convert.ToInt32(100 - (flighttimer.Elapsed.TotalMinutes / 85) * 100) + "% left";
+            FlightTime.Text = Convert.ToString(Convert.ToInt32(85 - flighttimer.Elapsed.TotalMinutes)) + " Mins";
         }
 
-        private async void SleepButton_Clicked(object sender, EventArgs e)
+        public void SleepUpdate()
         {
-            await Navigation.PushAsync(new SleepPage());
-        }
+            if (!sleeptimer.IsRunning) { sleeptimer.Start(); }
 
+            try { if (Convert.ToInt32(SleepTime.Text) <= 0) { sleeptimer.Reset(); return; } } catch (Exception) { }
+            SleepTime.Text = string.Format("{0}:{1:00}", (int)(TimeSpan.FromMinutes(sleeptimer.Elapsed.TotalMinutes)).TotalHours, (TimeSpan.FromMinutes(sleeptimer.Elapsed.TotalMinutes)).Minutes);
+            SleepBreaths.Text = "" + Convert.ToInt32(sleeptimer.Elapsed.TotalMinutes * 15) + " Breaths";
+        }
+       
         private void CurrencyEUR_TextChanged(object sender, TextChangedEventArgs e)
         {
-            try {  CurrencyGBP.Text = "€" + Math.Round(Convert.ToDouble(CurrencyEUR.Text) / Convert.ToDouble(clnt.varsyr), 2);} catch (Exception) { }
+            try {  CurrencyGBP.Text = "€" + Math.Round(Convert.ToDouble(CurrencyEUR.Text) / Convert.ToDouble(clnt.varsyr), 2);} catch (Exception) {}
         }
+
+        private void UpdateButton_Clicked(object sender, EventArgs e) { if (sleeptimer.IsRunning) { SleepUpdate(); } if (flighttimer.IsRunning) { FlightUpdate(); } HomeUpdate(); }       
     }
 }
