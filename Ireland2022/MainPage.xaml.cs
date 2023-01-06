@@ -69,7 +69,7 @@ namespace Ireland2022
        
         private void CurrencyEUR_TextChanged(object sender, TextChangedEventArgs e)
         {
-            try {  CurrencyGBP.Text = "€" + Math.Round(Convert.ToDouble(CurrencyEUR.Text) / Convert.ToDouble(clnt.varsyr), 2);} catch (Exception) {}
+            try {  CurrencyGBP.Text = "£" + Math.Round(Convert.ToDouble(CurrencyEUR.Text) * Convert.ToDouble(clnt.varsyr), 2);} catch (Exception) {}
         }
 
         private void UpdateButton_Clicked(object sender, EventArgs e) { if (sleeptimer.IsRunning) { SleepUpdate(); } if (flighttimer.IsRunning) { FlightUpdate(); } HomeUpdate(); }       
