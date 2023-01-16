@@ -11,7 +11,14 @@ namespace Ireland2022
     {
         HttpClient _httpClient;
         ReqVars vars = new ReqVars();
-        public string varsyr { get; set; }
+        CarbonIntensity intense = new CarbonIntensity();
+
+        
+
+
+
+        public string varsyr { get; set; } = "Offline"; 
+        public int intcarb { get; set; }
 
         public APIClient()
         {
@@ -36,5 +43,26 @@ namespace Ireland2022
 
             return vars;
         }
+
+        public async Task<CarbonIntensity> GetCarbon()
+        {
+
+            Uri uri = new Uri("https://api.carbonintensity.org.uk/intensity");
+            try
+            {
+                HttpResponseMessage rs = await _httpClient.GetAsync(uri);
+                string rsStr = await rs.Content.ReadAsStringAsync();
+                intense = JsonConvert.DeserializeObject<CarbonIntensity>(rsStr);
+                intcarb = intense.data[0].intensity.actual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return intense;
+        }
+
+
     }
 }
