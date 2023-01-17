@@ -24,10 +24,9 @@ namespace Ireland2022
         {
             InitializeComponent();
             BackgroundColor = Color.White;
+            clnt.GetWeather();
             HomeUpdate();
-            clnt.GetGBP();
-            //clnt.GetCarbon();
-            
+            clnt.GetGBP();          
             
             if (AppInfo.RequestedTheme == AppTheme.Dark) { BackgroundColor = Color.DarkSlateGray; }          
         }
@@ -40,12 +39,13 @@ namespace Ireland2022
 
             if(Connectivity.NetworkAccess == NetworkAccess.Internet && !Connectivity.ConnectionProfiles.Contains(ConnectionProfile.WiFi)) { DataOn.Text = "Data On"; } else { DataOn.Text = "Data Off"; }
 
-            if(Connectivity.ConnectionProfiles.Contains(ConnectionProfile.WiFi)) { WifiOn.Text = "Wifi On"; } else { WifiOn.Text = "Wifi Off"; } 
-
-            LOCTime.Text = "LOC: " + DateTime.Now.ToString("HH:mm");
+            if(Connectivity.ConnectionProfiles.Contains(ConnectionProfile.WiFi)) { WifiOn.Text = "Wifi On"; } else { WifiOn.Text = "Wifi Off"; }
+            
             if (DateTime.Now.Month > 4 && DateTime.Now.Month < 11) { dt = DateTime.UtcNow.AddHours(1).ToString("HH:mm"); }
             else { dt = DateTime.UtcNow.ToString("HH:mm"); }
             DESTime.Text = "DUB:" + dt;
+
+            LOCTime.Text = "DUB: " + clnt.intcarb + "℃";
         }
 
         public void FlightButton_Clicked(object sender, EventArgs e) { FlightUpdate();}

@@ -11,14 +11,10 @@ namespace Ireland2022
     {
         HttpClient _httpClient;
         ReqVars vars = new ReqVars();
-        CarbonIntensity intense = new CarbonIntensity();
-
-        
-
-
+        Weather intense = new Weather();
 
         public string varsyr { get; set; } = "Offline"; 
-        public int intcarb { get; set; }
+        public double intcarb { get; set; }
 
         public APIClient()
         {
@@ -44,16 +40,16 @@ namespace Ireland2022
             return vars;
         }
 
-        public async Task<CarbonIntensity> GetCarbon()
+        public async Task<Weather> GetWeather()
         {
 
-            Uri uri = new Uri("https://api.carbonintensity.org.uk/intensity");
+            Uri uri = new Uri("https://api.open-meteo.com/v1/forecast?latitude=53.33&longitude=-6.25&current_weather=true");
             try
             {
                 HttpResponseMessage rs = await _httpClient.GetAsync(uri);
                 string rsStr = await rs.Content.ReadAsStringAsync();
-                intense = JsonConvert.DeserializeObject<CarbonIntensity>(rsStr);
-                intcarb = intense.data[0].intensity.actual;
+                intense = JsonConvert.DeserializeObject<Weather>(rsStr);
+                intcarb = intense.current_weather.temperature;
             }
             catch (Exception ex)
             {
