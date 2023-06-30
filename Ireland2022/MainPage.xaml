@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ireland2022.MainPage"
              Title="Ireland 2022"
+             BackgroundColor="{Binding Dark}"
              >
 
 
@@ -29,17 +30,17 @@
 
 
 
-            <Label x:Name="LOCTime" Text="hi" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
-            <Label x:Name="DESTime" Text="hi" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
+            <Label x:Name="Wetr" Text="{Binding Wetr}" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
+            <Label x:Name="DESTime" Text="{Binding Time}" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
 
-            <Label x:Name="WifiOn" Text="hi" Grid.Row="2" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
-            <Label x:Name="DataOn" Text="hi" Grid.Row="2" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
+            <Label x:Name="WifiOn" Text="{Binding Wifi}" Grid.Row="2" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" />
+            <Label x:Name="DataOn" Text="{Binding Data}" Grid.Row="2" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
 
-            <Label x:Name="SleepTime" Text="Start Sleep" Grid.Row="4" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
-            <Label x:Name="SleepBreaths" Text="Start Sleep" Grid.Row="4" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
+            <Label x:Name="SleepTime" Text="{Binding Sleep}" Grid.Row="4" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
+            <Label x:Name="SleepBreaths" Text="{Binding Sleepbr}" Grid.Row="4" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
 
-            <Label x:Name="FlightTime" Text="Start Flight" Grid.Row="6" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
-            <Label x:Name="FlightPer" Text="Start Flight" Grid.Row="6" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
+            <Label x:Name="FlightTime" Text="{Binding FlightT}" Grid.Row="6" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
+            <Label x:Name="FlightPer" Text="{Binding FlightP }" Grid.Row="6" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
 
             <Entry x:Name="CurrencyEUR" Text="" Grid.Row="8" Grid.Column="0" TextColor="Black" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Start" BackgroundColor="Green" Keyboard="Numeric" TextChanged="CurrencyEUR_TextChanged" MaxLength="10"/>
             <Label x:Name="CurrencyGBP" Text="€" Grid.Row="8" Grid.Column="1" TextColor="Black" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Start" MaxLines="1"/>
@@ -47,11 +48,9 @@
 
             <Button x:Name="FlightButton" Text="Flight" Clicked="FlightButton_Clicked" BackgroundColor="Green" CornerRadius="50" Grid.Column="0" Grid.Row="10"/>
             <Button x:Name="SleepButton" Text="Sleep" Clicked="SleepButton_Clicked" BackgroundColor="Green" CornerRadius="50" Grid.Column="0" Grid.Row="11"/>
-            <ImageButton Source="IrelandLoadIcon" x:Name="UpdateButton" Clicked="UpdateButton_Clicked" BorderWidth="1" CornerRadius="25" Grid.Row="10" Grid.Column="1" HorizontalOptions="CenterAndExpand"/>
-
         </Grid>
 
-        <Label x:Name="AppVer" Text="hi" Grid.Row="2" TextColor="Black" FontSize="Micro" HorizontalOptions="CenterAndExpand" />
+        <Label x:Name="AppVer" Text="{Binding Ver}" Grid.Row="2" TextColor="Black" FontSize="Micro" HorizontalOptions="CenterAndExpand" />
        
 
 

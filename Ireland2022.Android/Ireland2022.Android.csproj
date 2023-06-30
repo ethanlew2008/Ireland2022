@@ -105,9 +105,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\IrelandLoadIcon.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\mipmap-mdpi\ire2022.png" />
   </ItemGroup>
   <ItemGroup>
